@@ -1,4 +1,4 @@
-package com.codecool.hogwarts_potions.model;
+package com.codecool.hogwarts_potions.persistence.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -11,10 +11,13 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Room {
 
-    @JsonIgnore
+    @Id
+    @GeneratedValue
     private Long id;
     private Integer capacity;
-    private Set<Student> residents;
+    @OneToMany
+    private Set<Student> resident;
 }
